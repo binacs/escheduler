@@ -6,6 +6,10 @@ import (
 	"github.com/binacsgo/inject"
 
 	"github.com/BinacsLee/escheduler/core"
+	"github.com/BinacsLee/escheduler/core/strategy"
+	"github.com/BinacsLee/escheduler/plugins/decision"
+	"github.com/BinacsLee/escheduler/plugins/prepare"
+	"github.com/BinacsLee/escheduler/plugins/process"
 )
 
 func init() {
@@ -22,8 +26,7 @@ var (
 			if err != nil {
 				return err
 			}
-			sched.OnStart()
-			return nil
+			return sched.Run()
 		},
 	}
 )
@@ -34,7 +37,14 @@ func initService() (core.EScheduler, error) {
 	inject.Regist("Logger", logger)
 	inject.Regist("EScheduler", sched)
 
-	inject.DoInject()
+	// Plugins
+	inject.Regist("PluginDefaultPrepare", &prepare.DefaultPrepare{})
+	inject.Regist("PluginDefaultProcess", &process.DefaultProcess{})
+	inject.Regist("PluginDefaultDecision", &decision.DefaultDecision{})
 
+	// Strategys
+	inject.Regist("DefaultStrategy", &strategy.DefaultStrategy{})
+
+	inject.DoInject()
 	return sched, nil
 }

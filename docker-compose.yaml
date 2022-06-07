@@ -1,0 +1,19 @@
+version: '3.1'
+
+services:
+  escheduler_dc:
+    container_name: escheduler_dc
+    build: .
+    # image: binacslee/escheduler:latest
+    command: escheduler start
+    volumes:
+      - ./:/docker-compose
+    ports:
+      - 9999:9999
+    networks:
+      - binacs_escheduler_local
+
+networks:
+  binacs_escheduler_local:
+    name: binacs_escheduler_local
+    driver: bridge

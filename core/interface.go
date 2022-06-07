@@ -1,5 +1,5 @@
 package core
 
 type EScheduler interface {
-	OnStart()
+	Run() error
 }
