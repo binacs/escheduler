@@ -2,7 +2,7 @@ package framework
 
 import "fmt"
 
-type GraphEdge interface {
+type Edge interface {
 	GraphObj
 	GetFrom() int64
 	SetFrom(int64)
@@ -10,7 +10,7 @@ type GraphEdge interface {
 	SetTo(int64)
 }
 
-type GraphEdgeImpl struct {
+type EdgeImpl struct {
 	name string
 	id   int64
 	// ...
@@ -18,41 +18,41 @@ type GraphEdgeImpl struct {
 }
 
 var (
-	_ GraphEdge = &GraphEdgeImpl{}
+	_ Edge = &EdgeImpl{}
 )
 
-func (e *GraphEdgeImpl) GetName() string {
+func (e *EdgeImpl) GetName() string {
 	return e.name
 }
 
-func (e *GraphEdgeImpl) SetName(name string) {
+func (e *EdgeImpl) SetName(name string) {
 	e.name = name
 }
 
-func (e *GraphEdgeImpl) GetID() int64 {
+func (e *EdgeImpl) GetID() int64 {
 	return e.id
 }
 
-func (e *GraphEdgeImpl) SetID(id int64) {
+func (e *EdgeImpl) SetID(id int64) {
 	e.id = id
 }
 
-func (e *GraphEdgeImpl) GetFrom() int64 {
+func (e *EdgeImpl) GetFrom() int64 {
 	return e.from
 }
 
-func (e *GraphEdgeImpl) SetFrom(from int64) {
+func (e *EdgeImpl) SetFrom(from int64) {
 	e.from = from
 }
 
-func (e *GraphEdgeImpl) GetTo() int64 {
+func (e *EdgeImpl) GetTo() int64 {
 	return e.to
 }
 
-func (e *GraphEdgeImpl) SetTo(to int64) {
+func (e *EdgeImpl) SetTo(to int64) {
 	e.to = to
 }
 
-func (e *GraphEdgeImpl) String() string {
+func (e *EdgeImpl) String() string {
 	return fmt.Sprintf("{Name:%v,ID:%v,From:%v,To:%v}", e.name, e.id, e.from, e.to)
 }

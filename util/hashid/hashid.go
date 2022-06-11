@@ -6,20 +6,23 @@ import (
 
 type HashID interface {
 	Get(string) int64
+	Lookup(int64) string
 	Exist(string) bool
 	Len() int64
 }
 
 type HashIDImpl struct {
-	data map[string]int64
-	id   int64
-	mu   sync.RWMutex
+	data   map[string]int64
+	lookup map[int64]string
+	id     int64
+	mu     sync.RWMutex
 }
 
 func NewHashID() HashID {
 	return &HashIDImpl{
-		data: map[string]int64{},
-		id:   0,
+		data:   make(map[string]int64),
+		lookup: make(map[int64]string),
+		id:     0,
 	}
 }
 
@@ -29,9 +32,17 @@ func (h *HashIDImpl) Get(key string) int64 {
 	_, ok := h.data[key]
 	if !ok {
 		h.data[key] = h.id
+		h.lookup[h.id] = key
 		h.id++
 	}
 	return h.data[key]
+}
+
+func (h *HashIDImpl) Lookup(id int64) string {
+	h.mu.RLock()
+	defer h.mu.RUnlock()
+	key := h.lookup[id]
+	return key
 }
 
 func (h *HashIDImpl) Exist(key string) bool {

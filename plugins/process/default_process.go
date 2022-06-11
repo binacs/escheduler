@@ -5,8 +5,8 @@ import (
 	"fmt"
 
 	"github.com/BinacsLee/escheduler/framework"
+	"github.com/BinacsLee/escheduler/internal/topology"
 	"github.com/BinacsLee/escheduler/util/names"
-	"github.com/BinacsLee/escheduler/util/tarjan"
 )
 
 const (
@@ -28,9 +28,27 @@ func (p *DefaultProcess) Name() string {
 	return Name
 }
 
-func (p *DefaultProcess) ProcessGraph(ctx context.Context, g framework.Graph) (framework.Graph, error) {
-	// TODO: Tarjan SCC and rebuild graph.
-	scc := tarjan.SCCTarjan(g)
-	fmt.Printf("SCC = %v\n", scc)
-	return nil, nil
+func (p *DefaultProcess) ProcessGraph(ctx context.Context, g framework.Graph) (framework.DepthChart, error) {
+	topo, isTopo := topology.Topology(g)
+	if !isTopo {
+		return nil, fmt.Errorf("not topology graph")
+	}
+
+	depth := make([]int64, g.NumNode())
+	for i := g.NumNode() - 1; i >= 0; i-- {
+		u := topo[i]
+		for j := g.Head(u); j != -1; j = g.Next(j) {
+			k := g.Edge(j)
+			if depth[u] < depth[k]+1 {
+				depth[u] = depth[k] + 1
+			}
+		}
+	}
+
+	depthChart := framework.NewDepthChart()
+	for i := int64(0); i < g.NumNode(); i++ {
+		u := topo[i]
+		depthChart.AddNode(g.GetNode(u), depth[u])
+	}
+	return depthChart, nil
 }

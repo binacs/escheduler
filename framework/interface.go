@@ -2,26 +2,38 @@ package framework
 
 import (
 	"context"
+	"fmt"
+
+	"github.com/BinacsLee/escheduler/util/set"
 )
 
 type (
-	NodeSet   []GraphNode
-	EdgeSet   []GraphEdge
+	NodeSet   set.Set
+	EdgeSet   set.Set
 	Relations []Relation
+	CheckFunc func(EdgeSet, ...Edge) bool
 )
 
+func (s Relations) String() string {
+	var str string
+	for i := range s {
+		str += fmt.Sprintf("{%v},", s[i])
+	}
+	return str
+}
+
 type Strategy interface {
-	Schedule(context.Context, []Relation) ([]EdgeSet, error)
+	Schedule(context.Context, []Relation) ([]Relations, error)
 }
 
 type Prepare interface {
-	GenerateGraph(context.Context, []GraphNode, []GraphEdge) (Graph, error)
+	GenerateGraph(context.Context, []Node, []Edge) (Graph, error)
 }
 
 type Process interface {
-	ProcessGraph(context.Context, Graph) (Graph, error)
+	ProcessGraph(context.Context, Graph) (DepthChart, error)
 }
 
 type Decision interface {
-	SelectEdges(context.Context, Graph) ([]GraphEdge, bool)
+	SelectEdges(context.Context, Graph, DepthChart, CheckFunc) (EdgeSet, bool)
 }

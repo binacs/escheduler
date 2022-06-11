@@ -2,36 +2,40 @@ package framework
 
 import "fmt"
 
-type GraphNode interface {
+type Node interface {
 	GraphObj
 }
 
-type GraphNodeImpl struct {
+type NodeImpl struct {
 	name string
 	id   int64
 	// ...
 }
 
 var (
-	_ GraphNode = &GraphNodeImpl{}
+	_ Node = &NodeImpl{}
 )
 
-func (n *GraphNodeImpl) GetName() string {
+func NewNode() Node {
+	return &NodeImpl{}
+}
+
+func (n *NodeImpl) GetName() string {
 	return n.name
 }
 
-func (n *GraphNodeImpl) SetName(name string) {
+func (n *NodeImpl) SetName(name string) {
 	n.name = name
 }
 
-func (n *GraphNodeImpl) GetID() int64 {
+func (n *NodeImpl) GetID() int64 {
 	return n.id
 }
 
-func (n *GraphNodeImpl) SetID(id int64) {
+func (n *NodeImpl) SetID(id int64) {
 	n.id = id
 }
 
-func (n *GraphNodeImpl) String() string {
+func (n *NodeImpl) String() string {
 	return fmt.Sprintf("{Name:%v,ID:%v}", n.name, n.id)
 }

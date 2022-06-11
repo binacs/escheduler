@@ -2,9 +2,10 @@ package core
 
 import (
 	"context"
+	"time"
 
-	"github.com/BinacsLee/escheduler/core/testdata"
 	"github.com/BinacsLee/escheduler/framework"
+	"github.com/BinacsLee/escheduler/testing/testdata"
 	"github.com/binacsgo/log"
 )
 
@@ -24,12 +25,17 @@ func (es *ESchedulerImpl) Run() error {
 		if quit := es.run(); quit {
 			return nil
 		}
+		time.Sleep(5 * time.Second)
 	}
 }
 
 func (es *ESchedulerImpl) run() bool {
 	testData := testdata.SelectRandomTestData()
-	log.Info("Got TestData", "testData", testData)
-	es.DefaultStrategy.Schedule(context.TODO(), testData.Relations)
-	return true
+	results, err := es.DefaultStrategy.Schedule(context.TODO(), testData.Relations)
+	if err != nil {
+		es.Logger.Info("Schedule Failed", "err", err)
+		return false
+	}
+	es.Logger.Info("Schedule Success", "results", results)
+	return false
 }
