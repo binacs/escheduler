@@ -84,10 +84,6 @@ func (d *DefaultDecision) SelectEdges(
 			break
 		}
 
-		for _, obj := range selectedEdges.List() {
-			selectedEdges.Insert(obj)
-		}
-
 		if chart.GetNodes(dep) != nil && chart.GetNodes(dep).Len() > 0 {
 			break
 		}

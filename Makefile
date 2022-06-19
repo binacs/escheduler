@@ -11,6 +11,7 @@ build:
 
 mock:
 	cd core && go generate; cd -
+	cd framework && go generate; cd -
 
 docker:
 	docker build -t binacslee/escheduler:latest . 
