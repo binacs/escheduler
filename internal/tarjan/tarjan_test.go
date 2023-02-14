@@ -4,7 +4,7 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/BinacsLee/escheduler/framework"
+	"github.com/binacs/escheduler/framework"
 )
 
 func TestSCCTarjan(t *testing.T) {

@@ -4,9 +4,9 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/BinacsLee/escheduler/framework"
-	"github.com/BinacsLee/escheduler/internal/tarjan"
-	"github.com/BinacsLee/escheduler/util/names"
+	"github.com/binacs/escheduler/framework"
+	"github.com/binacs/escheduler/internal/tarjan"
+	"github.com/binacs/escheduler/util/names"
 )
 
 const (

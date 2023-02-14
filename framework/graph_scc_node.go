@@ -3,7 +3,7 @@ package framework
 import (
 	"fmt"
 
-	"github.com/BinacsLee/escheduler/util/set"
+	"github.com/binacs/escheduler/util/set"
 )
 
 type SccNode interface {

@@ -3,7 +3,7 @@ package tarjan
 import (
 	"fmt"
 
-	"github.com/BinacsLee/escheduler/framework"
+	"github.com/binacs/escheduler/framework"
 )
 
 type SCC interface {

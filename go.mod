@@ -1,4 +1,4 @@
-module github.com/BinacsLee/escheduler
+module github.com/binacs/escheduler
 
 go 1.17
 

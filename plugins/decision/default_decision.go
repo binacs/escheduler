@@ -3,9 +3,9 @@ package decision
 import (
 	"context"
 
-	"github.com/BinacsLee/escheduler/framework"
-	"github.com/BinacsLee/escheduler/util/names"
-	"github.com/BinacsLee/escheduler/util/set"
+	"github.com/binacs/escheduler/framework"
+	"github.com/binacs/escheduler/util/names"
+	"github.com/binacs/escheduler/util/set"
 )
 
 const (

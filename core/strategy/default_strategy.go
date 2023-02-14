@@ -4,8 +4,8 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/BinacsLee/escheduler/framework"
-	"github.com/BinacsLee/escheduler/util/hashid"
+	"github.com/binacs/escheduler/framework"
+	"github.com/binacs/escheduler/util/hashid"
 	"github.com/binacsgo/log"
 )
 

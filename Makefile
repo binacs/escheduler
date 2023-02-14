@@ -1,5 +1,5 @@
 BUILD_TAGS?=
-BUILD_FLAGS = -ldflags "-X github.com/BinacsLee/escheduler/version.GitCommit=`git rev-parse HEAD`"
+BUILD_FLAGS = -ldflags "-X github.com/binacs/escheduler/version.GitCommit=`git rev-parse HEAD`"
 
 default: clean build
 
@@ -14,7 +14,7 @@ mock:
 	cd framework && go generate; cd -
 
 docker:
-	docker build -t binacslee/escheduler:latest . 
+	docker build -t binacs/escheduler:latest . 
 
 test:
 	go test ./... -cover

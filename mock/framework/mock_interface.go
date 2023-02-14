@@ -8,7 +8,7 @@ import (
 	context "context"
 	reflect "reflect"
 
-	framework "github.com/BinacsLee/escheduler/framework"
+	framework "github.com/binacs/escheduler/framework"
 	gomock "github.com/golang/mock/gomock"
 )
 

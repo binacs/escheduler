@@ -3,7 +3,7 @@ package main
 import (
 	"os"
 
-	cmd "github.com/BinacsLee/escheduler/cmd/commands"
+	cmd "github.com/binacs/escheduler/cmd/commands"
 )
 
 func main() {

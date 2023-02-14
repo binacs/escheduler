@@ -5,11 +5,11 @@ import (
 
 	"github.com/binacsgo/inject"
 
-	"github.com/BinacsLee/escheduler/core"
-	"github.com/BinacsLee/escheduler/core/strategy"
-	"github.com/BinacsLee/escheduler/plugins/decision"
-	"github.com/BinacsLee/escheduler/plugins/prepare"
-	"github.com/BinacsLee/escheduler/plugins/process"
+	"github.com/binacs/escheduler/core"
+	"github.com/binacs/escheduler/core/strategy"
+	"github.com/binacs/escheduler/plugins/decision"
+	"github.com/binacs/escheduler/plugins/prepare"
+	"github.com/binacs/escheduler/plugins/process"
 )
 
 func init() {

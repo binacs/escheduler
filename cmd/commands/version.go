@@ -3,7 +3,7 @@ package commands
 import (
 	"github.com/spf13/cobra"
 
-	"github.com/BinacsLee/escheduler/version"
+	"github.com/binacs/escheduler/version"
 )
 
 var (

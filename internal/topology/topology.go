@@ -1,6 +1,6 @@
 package topology
 
-import "github.com/BinacsLee/escheduler/framework"
+import "github.com/binacs/escheduler/framework"
 
 func Topology(g framework.Graph) ([]int64, bool) {
 	queue := make([]int64, g.NumNode(), g.NumNode())

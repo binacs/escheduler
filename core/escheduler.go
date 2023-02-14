@@ -4,8 +4,8 @@ import (
 	"context"
 	"time"
 
-	"github.com/BinacsLee/escheduler/framework"
-	"github.com/BinacsLee/escheduler/testing/testdata"
+	"github.com/binacs/escheduler/framework"
+	"github.com/binacs/escheduler/testing/testdata"
 	"github.com/binacsgo/log"
 )
 

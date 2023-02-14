@@ -1,6 +1,6 @@
 package framework
 
-import "github.com/BinacsLee/escheduler/util/set"
+import "github.com/binacs/escheduler/util/set"
 
 type NodeWrapper struct{ Node }
 

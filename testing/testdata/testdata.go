@@ -3,7 +3,7 @@ package testdata
 import (
 	"math/rand"
 
-	"github.com/BinacsLee/escheduler/framework"
+	"github.com/binacs/escheduler/framework"
 )
 
 type TestGraph struct {

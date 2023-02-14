@@ -1,6 +1,6 @@
 package framework
 
-import "github.com/BinacsLee/escheduler/util/set"
+import "github.com/binacs/escheduler/util/set"
 
 type DepthChart interface {
 	AddNode(node Node, depth int64)
