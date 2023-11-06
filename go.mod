@@ -6,7 +6,7 @@ require (
 	github.com/binacsgo/inject v0.0.0-20211121070049-6fd0aad6b52a
 	github.com/binacsgo/log v0.0.0-20200827012301-4f49b8c3150e
 	github.com/golang/mock v1.6.0
-	github.com/spf13/cobra v1.7.0
+	github.com/spf13/cobra v1.8.0
 )
 
 require (
